@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th>Title</th>
+    <td><%= @task.title %></td>
+  </tr>
+  <tr>
+    <th>State</th>
+    <td><%= if @task.state == 0 then "active" else "done" end %></td>
+  </tr>
+  <tr>
+    <th>Content</th>
+    <td><%= @task.content %></td>
+  </tr>
+  <tr>
+    <th>Created at</th>
+    <td><%= @task.created_at %></td>
+  </tr>
+  <tr>
+    <th>Updatet at</th>
+    <td><%= @task.updated_at %></td>
+  </tr>
+</table>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back to list', tasks_path %>

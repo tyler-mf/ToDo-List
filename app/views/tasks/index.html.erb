@@ -1,0 +1,23 @@
+<h1>List</h1>
+<%= link_to 'New Task', new_task_path %>
+
+	<table>
+<% @tasks.each do |task| %>
+
+		<tr>
+			<td>
+				<% if task.state == 0 %>
+					&#9744;
+				<% else %>
+					&#10004;
+				<% end %>
+			</td>
+			<td>
+				<%= task.content %>
+			</td>
+			<td>
+				<%= link_to 'Show >', task_path(task) %>
+			</td>
+		</tr>
+<% end %>
+	</table>
