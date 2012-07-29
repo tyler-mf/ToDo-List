@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
+	before_filter :authenticate_user!
+
   def  index
-		@tasks = Task.all
+		@tasks = current_user.tasks
   end
 
 	def show
@@ -8,7 +10,7 @@ class TasksController < ApplicationController
 	end
 
 	def new
-		@task = Task.new
+		@task = current_user.tasks.new
 	end
 	
 	def edit
@@ -16,7 +18,7 @@ class TasksController < ApplicationController
 	end
 
 	def create
-		@task= Task.new(params[:task])
+		@task = current_user.tasks.new(params[:task])
 		if @task.save
 			flash[:success] = "Task created"
 			redirect_to @task
