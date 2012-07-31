@@ -6,9 +6,9 @@ describe "Task page" do
 
 		before { visit root_path }
 
-    it "should have selector 'title'" do
+		it "should have selector 'title'" do
 			page.should have_selector('title', text: "ToDo List")
-    end
+		end
 
 		it "should not have link 'New Task'" do
 			page.should_not have_link('New Task', href: '/tasks/new')
