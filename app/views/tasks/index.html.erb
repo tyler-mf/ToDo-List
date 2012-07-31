@@ -1,23 +1,22 @@
-<h1>List</h1>
-<%= link_to 'New Task', new_task_path %>
-
-	<table>
-<% @tasks.each do |task| %>
-
-		<tr>
-			<td>
-				<% if task.state == 0 %>
-					&#9744;
-				<% else %>
-					&#10004;
-				<% end %>
-			</td>
-			<td>
-				<%= task.content %>
-			</td>
-			<td>
-				<%= link_to 'Show >', task_path(task) %>
-			</td>
-		</tr>
-<% end %>
+<% provide(:title, 'Tasks') %>
+<h2>List</h2>
+	<table class="table table-bordered index">
+		<% @tasks.each do |task| %>
+			<tr>
+				<td valign="top" align="center", width="20px">
+					<% if task.state == 0 %>
+						&#9744;
+					<% else %>	
+						&#10004;
+					<% end %>
+				</td>
+				<td>
+					<%= task.content %>
+				</td>
+				<td width="50px">
+					<%= link_to 'Show', task_path(task) %>
+				</td>
+			</tr>
+		<% end %>
 	</table>
+<%= link_to 'New Task', new_task_path, class: 'btn btn-success' %>

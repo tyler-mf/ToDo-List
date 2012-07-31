@@ -1,11 +1,9 @@
+<% provide(:title, 'Edit tasks') %>
+
 <h2>Edit task</h2>
-<div class="row">
-  <div class="span6 offset3">
 
-  <%= render 'form' %>
+<%= render 'form' %>
 
-  <%= link_to 'Show', @task %> |
-  <%= link_to 'Back to list', tasks_path %> |
-	<%= link_to 'Delele', @task, confirm: 'Are you sure?', method: :delete %>
-  </div>
-</div>
+<%= link_to 'Show', @task %> |
+<%= link_to 'Back to list', tasks_path %> |
+<%= link_to 'Delele', @task, confirm: 'Are you sure?', method: :delete %>
