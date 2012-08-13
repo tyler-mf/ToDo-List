@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  padding-top: 80px;
+
 }
 
 section {
@@ -112,4 +112,17 @@ input, textarea, select, .uneditable-input {
 	a {
 		font-size: 80%;
 	}
+}
+
+.input-xlarge {
+  width: 100%;
+}
+
+.navbar-inner {
+  min-height: 50px;
+  min-width: 940px;
+}
+
+.navbar .nav > li > a {
+  padding: 10px 0 11px;
 }
