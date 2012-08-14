@@ -1,56 +1,42 @@
 require 'spec_helper'
 
-describe "Task page" do
+describe "Task" do 
+	let(:user) { FactoryGirl.create(:user) }
 
-  describe "before sign up or sign in" do
+	before do
+		visit new_user_session_path
+		fill_in "Username", with: user.username
+		fill_in "Password", with: user.password
+		click_button "Sign in"
+	end
 
-		before { visit root_path }
+	describe "create" do
+		before { visit new_task_path }
 
-		it "should have selector 'title'" do
-			page.should have_selector('title', text: "ToDo List")
+		describe "with invalid information" do
+			it "should not create a task" do 
+				expect { click_button "Create Task" }.should_not change(Task, :count)
+			end
 		end
 
-		it "should not have link 'New Task'" do
-			page.should_not have_link('New Task', href: '/tasks/new')
-		end
-		
-		it "should not have link 'Sing out'" do
-			page.should_not have_link('Sign out', href: '/users/sign_out')
-		end
+		describe "with valid information" do
+      		before { fill_in 'Content', with: "Lorem ipsum" }
+      		it "should create a task" do
+        		expect { click_button "Create Task" }.should change(Task, :count).by(1)
+      		end
+    	end
+	end
 
-		it "should have link 'sign up'" do
-			page.should have_link("Sign up", href: new_user_registration_path)
-		end
+	describe "delete" do
 
-		it "should have link 'sign in'" do
-			page.should have_link('Sign in', href: new_user_session_path)
-		end
-  end
-
-	describe "after sign up" do
-
-#		include Devise::TestHelpers --> issue https://github.com/rspec/rspec-rails/issues/534
-
-
-		before do
-			visit new_user_registration_path
-			fill_in "Username",              with: "tyler"
-			fill_in "Email",                 with: "test@example.com"
-			fill_in "Password",              with: "secretpassword"
-			fill_in "Password confirmation", with: "secretpassword"
-			click_button "Sign up"
+		before do 
+			FactoryGirl.create(:task, user: user)
 		end
 
-		it "should have link 'Sing out'" do
-			page.should have_link('Sign out', href: destroy_user_session_path)
-		end
-		
-		it "should have content 'username'" do
-			page.should have_content('tyler')
-		end
-		
-		it "should have link 'New task'" do
-			page.should have_link('New Task', href: new_task_path)
+		describe "delete task" do
+			before { visit "/tasks/1/edit" }
+
+			it { expect { click_link "Delete" }.should change(Task, :count).by(-1) }
 		end
 	end
 end

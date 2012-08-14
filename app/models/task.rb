@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  attr_accessible :content, :state, :title
+	attr_accessible :content, :state, :title
 
 	belongs_to :user
 
