@@ -70,18 +70,18 @@ header p {
 }
 
 #logo {
-	float: left;
- 	margin-right: 10px;
-	font-size: 1.7em;
-	color: white;
-	letter-spacing: -1px;
-	padding-top: 9px;
-	font-weight: bold;
-	line-height: 1;
-	&:hover {
-    	color: white;
-    	text-decoration: none;
-	}
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
 }
 
 input, textarea, select, .uneditable-input {
@@ -107,11 +107,11 @@ input, textarea, select, .uneditable-input {
  }
 
 .index {
-	margin-top: 20px;
-	font-size: 150%;
-	a {
-		font-size: 80%;
-	}
+  margin-top: 20px;
+  font-size: 150%;
+  a {
+    font-size: 80%;
+  }
 }
 
 .input-xlarge {
@@ -125,4 +125,8 @@ input, textarea, select, .uneditable-input {
 
 .navbar .nav > li > a {
   padding: 10px 0 11px;
+}
+
+.table tr td {
+  vertical-align: middle;
 }
